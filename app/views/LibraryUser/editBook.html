@@ -1,0 +1,50 @@
+#{extends 'main.html'/}
+#{set title:'edit book'/}
+
+<a href="@{Application.logout}">Logout</a> |
+<a href="@{LibraryUser.library}">Back to Library</a>
+
+#{form @Application.editResource(currentShelve.id, book.id)}
+	#{if flash.success}
+		<p class = "success">This book or resource has been edited successfully</p>
+	#{/ if}
+	<p>
+		<label for "title">Book Title</label><input type = "text" name = "title" value = "${flash.title ?: book.title}">
+		<span class = "error">#{error "title" /}</span>
+	</p>
+	<p>
+		<label for = "category">Category</label><select name = "category">
+				#{list items=categories, as:'category'}
+					#{ if category.category ==  book.category.category}
+						<option value="${category.category}" selected>${category.category}</option>
+					#{/ if}
+					#{else}
+						<option value="${category.category}">${category.category}</option>
+					#{/ else}
+				#{/list}
+			</select>
+		<span class = "error">#{error "category" /}</span>
+	</p>
+	<p>
+		<label for = "shelve">Shelve</label><select name = "newShelveid">
+				#{list items=library.shelves, as:'shelve'}
+					#{ if shelve.name ==  currentShelve.name}
+						<option value="${shelve.id}" selected>${shelve.name}</option>
+					#{/ if}
+					#{else}
+						<option value="${shelve.id}">${shelve.name}</option>
+					#{/ else}
+				#{/list}
+			</select>
+		
+		<span class = "error">#{error "shelve" /}</span>
+	</p>
+		
+	<p>
+		<label for = "preview">Preview</label><textarea style = "width: 300px; height: 100px;" placeholder = "No preview yet, be the one to preview this book">${book.preview}</textarea>
+	</p>
+		
+	<p>
+		<input type = "submit" name = "editResource" value = "Save Changes">
+	</p>
+#{/form}

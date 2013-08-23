@@ -1,0 +1,21 @@
+# Test data
+
+User(bob):
+    email:          bob@gmail.com
+    password:       secret
+    first_name:     Bob
+    last_name:      Mest
+    isAdmin:        true
+    
+User(jeff):
+    email:          jeff@gmail.com
+    password:       secret
+    first_name:     Jeff  
+    last_name:      Mest  
+    
+User(paul):
+    email:          paul@gmail.com
+    password:       secret
+    firt_name:      Paul
+    last_name:      Mest    
+    

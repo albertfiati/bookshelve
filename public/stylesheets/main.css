@@ -1,0 +1,71 @@
+.error{color:#f00;
+	   font-weight:bold;}
+	   
+.success {
+	color: green;
+}
+
+.signup-form input{border-radius:0px;}
+
+.signup-form{border-radius:30px !important;}
+
+.mybrand{color: #08c;
+		color: -webkit-linear-gradient(left,#00548b,#08c 22%,#00a19c 43%,#00548b 79%,#005678);
+		color: -moz-linear-gradient(left,#00548b,#08c 22%,#00a19c 43%,#00548b 79%,#005678);
+		color: -o-linear-gradient(left,#00548b,#08c 22%,#00a19c 43%,#00548b 79%,#005678);
+		color: -ms-linear-gradient(left,#00548b,#08c 22%,#00a19c 43%,#00548b 79%,#005678);
+		color: linear-gradient(left,#00548b,#08c 22%,#00a19c 43%,#00548b 79%,#005678);}
+
+.header{height:80px;
+		box-shadow:0px 2px #ccc;
+		margin-bottom:15px;
+		z-index:1000;
+		background-image: url("/public/images/tiny_grid.png");}
+
+.login{margin-top:20px;}
+
+.login input[type="text"], .login input[type="password"]{padding:4.6px; border:1px solid #ccc; border-radius:3px;}
+		
+
+.coverpage{height:597px;
+		   background-image: url("/public/images/coverpage.jpg");}
+		   
+.center{position:relative;
+		width:700px;
+		padding:5px;
+		left:320px;
+		top:80px;
+		color:#fff;
+		text-shadow:2px 3px 6px #000;}
+		
+.signupdiv{padding:15px;
+		   background-color:rgba(120,120,120,0.39);
+		   color:#fff;
+		   width:300px;
+		   overflow: auto;}
+		   
+.shelve-name{margin-top:-15px !important;}
+
+#quote {
+	background-color:rgba(120,120,120,0.39);
+	overflow: auto;
+	border-radius: 5px;
+	padding: 5px 4px 5px 4px;
+}
+
+#ghandi {
+	font-style: italic;
+}
+
+.book{min-height:200px;
+	  max-height:200px;
+	  min-width:155px;
+	  max-width:155px;
+	  margin:0px 10px 10px 0px !important;}
+	  
+.book-img{min-height:160px;
+	      max-height:160px;
+	      min-width:130px;
+	  	  max-width:130px;
+	  	  margin:0 auto;}	
+

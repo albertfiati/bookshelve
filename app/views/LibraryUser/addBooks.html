@@ -1,0 +1,70 @@
+#{extends 'main.html'/}
+#{set title:'Add Books'/}
+
+<div>
+	<!-- menu -->
+	#{menu name:"${user.firstname}" /}
+	
+	<!-- content -->
+	<div class="container">
+		<div class="col-lg-3">
+			<div>
+				<div class="list-group">					
+					<a href="#" class="list-group-item active">
+					   Book Categories
+					</a>
+					#{list items=categories, as:'category'}
+						<a href="#${category.category.slugify()}" class="list-group-item tab" id="${category.category.slugify()}">
+							${category.category}
+							*{<span  class="label label-info pull-right">
+								${shelve.books.size()} book${shelve.books.size().pluralize()}
+							</span>}*
+						</a>					
+					#{/list}				 
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-9">
+			#{form @LibraryUser.addBookToShelve(shelveid)}				
+				#{list items=categories, as:'category'}
+					<div class="shelve" id="${category.category.slugify()}-tab">
+						<div class="page-header shelve-name">
+							<h1>
+								${category.category}
+								<!-- <small>
+									<a href="/libraryuser/library/shelve/*{${.id}}*/books/add" class="btn btn-success btn-xs">
+										Add Book(s)
+									</a>
+								</small>-->
+							</h1>
+						</div>
+						<div class="shelve-row row">						
+							#{list items=books, as:'book'}
+								#{if category.equals(book.category)}
+									<div class="col-lg-2" style="max-width:140px; margin:0px 30px 10px 0px;">									
+											<div class="thumbnail book">
+												<img src="holder.js/300x200" alt="" class="book-img">
+												<div class="caption">	
+													*{<p>
+														${book.title} 
+													</p>}*								
+													<p align="right">	
+														<input type="checkbox" name="books[]" value="${book.id}">
+													</p>
+												</div>
+											</div>																				
+									</div>
+								#{/if}
+							#{/list}
+						</div>
+					</div>
+				#{/list}			
+				<div>
+					<button type="submit" class="btn btn-success">Add slected book(s) to Shelve</button>
+				</div>
+			#{/form}
+		</div>
+	
+	</div>	
+</div>
+

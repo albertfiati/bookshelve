@@ -1,0 +1,23 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+
+#Validation messages
+secure.title = Log in to Mest Shelve
+secure.username = Email
+secure.password = Password
+secure.remember = Remember me
+secure.signin = Sign in
+secure.logout = You have successfully logged out
+secure.required_error = All fields are required
+secure.error = Invalid username or password
+
+register.title = Register for Mest Shelve
+register.signup = Register
+register.confirm_password = Confirm Password
+register.email_error = Make sure you are using your meltwater email
+register_success = You have registered successfully for Mest Shelve
+pass_unmatch_error = Passwords do not match
+
+login.error = Invalid credentials
+signup.error = Invalid credentials

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<testsuite failures="0" time="0.119" errors="0" skipped="0" tests="7" name="BasicTest">
+  <testcase classname="BasicTest" name="bookTest" time="0.035">
+      </testcase>
+  <testcase classname="BasicTest" name="commentTest" time="0.01">
+      </testcase>
+  <testcase classname="BasicTest" name="ratingTest" time="0.005">
+      </testcase>
+  <testcase classname="BasicTest" name="shelveTest" time="0.023">
+      </testcase>
+  <testcase classname="BasicTest" name="libraryTest" time="0.014">
+      </testcase>
+  <testcase classname="BasicTest" name="categoryTest" time="0.007">
+      </testcase>
+  <testcase classname="BasicTest" name="userTest" time="0.025">
+      </testcase>
+</testsuite>

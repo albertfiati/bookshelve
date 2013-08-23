@@ -1,0 +1,34 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       												Application.index
+POST	/login																					Application.login
+GET		/logout																					Application.logout
+
+# Admin Routes
+GET		/admin/resources/?																		Admin.resources
+GET		/admin/users/?																			Admin.users
+GET		/admin/users/{userid}/block																Admin.blockUser
+GET		/admin/users/{userid}/activate															Admin.activateUser
+GET		/admin/users/{userid}/switchadmin															Admin.makeUserAdmin
+
+# Library Users Routes
+GET		/libraryuser/library																	LibraryUser.library
+GET		/libraryuser/library/shelve/{shelveid}/books/add										LibraryUser.addBooks
+POST	/libraryuser/library/shelve/{shelveid}/addBooksToShelve									LibraryUser.addBookToShelve
+GET		/libraryuser/library/shelve/{shelveid}/books/{bookid}/remove							LibraryUser.removeBookFromShelve
+GET		/libraryuser/library/shelve/{shelveid}/books/{bookid}/review																						LibraryUser.reviewBook
+GET		/libraryuser/library/shelve/{shelveid}/books/{bookid}/edit							LibraryUser.editBook
+GET		/libraryuser/library/shelve/{shelveid}/remove										LibraryUser.removeShelve
+
+# Ignore favicon requests
+GET     /favicon.ico                            												404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                												staticDir:public
+
+# Catch all	
+*       /{controller}/{action}                  												{controller}.{action}
+

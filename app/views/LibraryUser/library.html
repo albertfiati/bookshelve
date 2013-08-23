@@ -1,0 +1,108 @@
+#{extends 'main.html'/}
+#{set title:'user'/}
+
+<div>
+	<!-- menu -->
+	#{menu name:"${user.firstname}" /}
+	
+	<!-- content -->
+	<div class="container">
+		
+			<div class="col-lg-3">
+				<div>
+					<div class="list-group">
+						<a href="#" class="list-group-item active">
+						   Create a new Shelve
+						</a>
+						<a class="list-group-item">
+							<p class="error">#{error 'name'/}</p>
+							#{form @LibraryUser.addShelve(), class:"form-inline"}
+								<div>
+								    <div class="input-group">		      
+								      <input type="text" name="name" placeholder="Enter shelve's name" class="form-control">
+								      <span class="input-group-btn">
+								        <button class="btn btn-primary" type="submit">
+								        	*{<b class="glyphicon glyphicon-plus"></b>}* Add
+								        </button>
+								      </span>
+								    </div><!-- /input-group -->
+								</div>    						
+							#{/form}						
+						</a>
+						<a href="#" class="list-group-item active">
+						   Shelves
+						</a>
+						#{list items=shelves, as:'shelve'}
+							<ul class = "list-group">
+								<a href="#${shelve.name.slugify()}" class="list-group-item tab" id="${shelve.name.slugify()}">							
+									${shelve.name}
+									<span  class="label label-info pull-right">
+										${shelve.books.size()} book${shelve.books.size().pluralize()}
+									</span >
+								</a>	
+											
+						#{/list}				 
+					</div>
+				</div>
+			</div>
+			#{if shelves.size() != 0}
+			<div class="col-lg-9">
+				#{list items=shelves, as:'shelve'}
+					<div class="shelve" id="${shelve.name.slugify()}-tab">
+						<div class="page-header shelve-name">
+							<h1>
+								${shelve.name}
+								<small>
+									<a href="/libraryuser/library/shelve/${shelve.id}/books/add" class="btn btn-success btn-xs">
+										Add Book(s)
+									</a>
+									<a href = "/libraryuser/library/shelve/${shelve.id}/remove" class="label label-info ">
+										<b class="glyphicon glyphicon-trash"></b>
+									</a>
+								</small>
+							</h1>
+							
+						</div>
+						<div class="shelve-row row">
+							#{list items=shelve.books, as:'book'}
+								<div class="col-lg-2" style="max-width:140px; margin:0px 30px 10px 0px;">
+									<div class="thumbnail book">
+										<img src="holder.js/300x200" alt="" class="book-img">
+										<div class="caption">	
+											*{<p>
+												${book.title} 
+											</p>}*								
+											<p align="right">	
+												<a href="/libraryuser/library/shelve/${shelve.id}/books/${book.id}/review" title="Review">
+													<b class="glyphicon glyphicon-pencil"></b>
+												</a>										
+												<a href="" title="Share">
+													<b class="glyphicon glyphicon-thumbs-up"></b>
+												</a>
+												<a href="" title="Transfer">
+													<b class="glyphicon glyphicon-check"></b>
+												</a>
+												<a href="/libraryuser/library/shelve/${shelve.id}/books/${book.id}/remove" title='Remove'>
+													<b class="glyphicon glyphicon-trash"></b>
+												</a>
+											</p>
+										</div>
+									</div>
+								</div>
+							#{/list}
+						</div>
+					</div>
+				#{/list}
+			</div>
+		#{/ if}
+		#{else}
+	
+		#{/ else}
+	</div>
+	
+</div>
+
+
+
+
+

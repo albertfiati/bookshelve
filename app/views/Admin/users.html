@@ -1,0 +1,47 @@
+#{extends 'main.html'/}
+#{set title:'admin'/}
+
+<a href="@{Application.logout}">Logout</a>
+<h1>Admin</h1>
+<div>
+	<h1>Users</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Username</th>
+				<th>Fullname</th>
+				<th>Status</th>
+				<th>Is Admin</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			#{list items=users, as:'user'}
+				<tr>
+					<td>${user.username}</td>
+					<td>${user.firstname} ${user.lastname}</td>
+					<td>${user.status}</td>
+					<td>${user.isAdmin}</td>
+					<td>
+						#{if user.isAdmin == false}
+							 <a href = "/admin/users/${user.id}/switchadmin">Make User Admin</a> |
+						#{/ if}
+						#{if user.isAdmin == true}
+							<a href = "/admin/users/${user.id}/switchadmin">Unmake User Admin</a> |
+						#{/ if}
+						#{if user.status=="active"}
+							<a href="/admin/users/${user.id}/block">Block</a>
+						#{/if}
+						#{if user.status=="blocked"}
+							<a href="/admin/users/${user.id}/activate">Activate</a>
+						#{/if}
+					</td>
+				</tr>
+			#{/list}
+		</tbody>
+	</table>
+</div>
+
+<div>
+	<h1><a href="/admin/resources">Books</a></h1>
+</div>

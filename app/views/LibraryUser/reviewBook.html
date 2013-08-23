@@ -1,0 +1,104 @@
+#{extends 'main.html'/}
+#{set title:'book preview' /}
+
+<div class = "container">
+	<!-- menu -->
+	<div class="header">
+		<div class="container">
+			<div class="col-lg-4">
+				<h1 class="brand mybrand">MESTShelve</h1>
+			</div>
+			<div class="login pull-right col-lg-3">				
+				<div class="btn-group pull-right dropdown">
+				  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+				    Welcome: ${user.library.name} 
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu">
+				    <li>
+				    	<a href="@{Application.logout}">
+				    		<b class="icon-signout"></b> Logout
+				    	</a>
+				    </li>
+				    <li>
+				    	<a href="@{LibraryUser.library}">Back to Library</a>
+				    </li>
+				  </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div >
+		<div class="col-lg-8">
+			<h3>${book.title}</h3>
+			<ul style = "list-style: none;">
+				<li>Category: ${book.category}</li>
+				<li>Date Added: ${book.dateAdded}</li>
+			</ul>
+			
+			<div>
+				<h3>Review</h3>
+				<p>${book.preview ?: "Review will be here"}</p>
+				<a href="" class="btn btn-success btn-xs">
+									Read This Book
+				</a>
+								
+				<a href="" class="btn btn-success btn-xs">
+									Download This Book
+				</a>
+				
+				
+			</div>
+		</div>
+		
+		<div  class="thumbnail col-lg-4" style = "width: 300px; height: 400px">
+			<img src="holder.js/500x200" width = "100%" height = "100%" alt="" >
+			<div class="caption">	
+				*{<p>
+					${book.title} 
+				</p>}*								
+				<p align="right">	
+					<a href="/libraryuser/library/shelve/${shelveid}/books/${book.id}/edit" title="Edit">
+						<b class="glyphicon glyphicon-pencil"></b>
+					</a>										
+					<a href="" title="Share">
+						<b class="glyphicon glyphicon-thumbs-up"></b>
+					</a>
+					<a href="" title="Transfer">
+						<b class="glyphicon glyphicon-check"></b>
+					</a>
+					<a href="/libraryuser/library/shelve/${shelveid}/books/${book.id}/remove" title='Remove'>
+						<b class="glyphicon glyphicon-trash"></b>
+					</a>
+				</p>
+			</div>
+		</div>
+		
+		
+	</div>
+
+</div>
+
+<div class = "container">
+		<h3>${book.comments.size()} Comment(s)</h3>
+		#{if flash.success}
+			<span class = "success">&{flash.success}</span>
+		#{/if}
+	
+		<div>
+			#{list items=book.comments, as: 'comment'}
+				<div>
+					<span style = "font-style: italic">Posted by ${comment.author} on ${comment.postedAt}</span><br>
+					${comment.content}
+				</div>
+				<hr>
+			#{/list}
+		</div>
+	
+		#{form @LibraryUser.commentOnBook(book.id, shelveid)}
+			<label for = "author">Your Name</label> 	<input type = "text" name = "author" value = "${user.username}" /><span class="error">#{error 'author'/}</span><p></p>
+			<label for = "content">Comment</label> <textarea style = "width: 300px; height: 100px;"   name = "content" placeholder = "Enter your comment here"></textarea><span class="error">#{error 'content'/}</span><p></p>
+			<input type = "submit" name = "addComment" value = "Post Comment">
+		#{/form}
+	</div>

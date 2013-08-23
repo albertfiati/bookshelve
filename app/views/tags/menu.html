@@ -1,0 +1,39 @@
+<div class="header">
+	<div class="container">
+		<div class="col-lg-4">
+			<h1 class="brand mybrand">MESTShelve</h1>
+		</div>
+		<div class="login pull-right col-lg-3">				
+			<div class="btn-group pull-right dropdown">
+			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+			    <b class="glyphicon glyphicon-user"></b>
+			    Welcome: ${_name}  
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu">
+				 	<li>
+				    	<a href="@{Application.logout}">
+				    		<b class="glyphicon glyphicon-bookmark"></b> Update profile
+				    	</a>
+				    </li>   
+				    <li>
+				    	<a href="@{Application.logout}">
+				    		<b class="glyphicon glyphicon-cog"></b> Change Password
+				    	</a>
+				    </li>
+				    <li>
+				    	<a href="@{Application.logout}">
+				    		<b class="glyphicon glyphicon-envelope"></b> Change Email
+				    	</a>
+				    </li>
+				    <li class="divider"></li>
+				     <li>
+				    	<a href="@{Application.logout}">
+				    		<b class="glyphicon glyphicon-log-out"></b> Logout
+				    	</a>
+				    </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
